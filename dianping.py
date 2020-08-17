@@ -58,6 +58,7 @@ class Dianping(object):
             print('Error: %s, Please Check it.' % e.args)
 
     def save_to_db(self, data):
+        # upsert data, aviod to repeat
         self.collection.update_one({ 'name': data['name'] }, { "$set": data }, True)
 
     def main(self):
